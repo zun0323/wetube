@@ -6,10 +6,15 @@
   "author": "Jun",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/node": "^7.2.2",
     "express": "^4.16.4"
   },
   "scripts": {
-    "start": "pm2 start index.js --watch",
+    "start": "pm2 start --interpreter babel-node index.js --watch",
     "stop": "pm2 delete index.js"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.3.1"
   }
 }

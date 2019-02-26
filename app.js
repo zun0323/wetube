@@ -18,3 +18,5 @@ app.use(morgan("dev"));
 
 app.get(`/`, handleHome);
 app.get(`/profile`, handleProfile);
+
+export default app;

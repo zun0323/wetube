@@ -19,6 +19,7 @@
     "stop": "pm2 delete index.js"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.3.1"
+    "@babel/preset-env": "^7.3.1",
+    "nodemon": "^1.18.10"
   }
 }

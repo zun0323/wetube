@@ -7,7 +7,7 @@ export const serach = (req, res) => {
   const {
     query: { term: searchingBy }
   } = req;
-  res.render("search", { pageTitle: "search", searchingBy });
+  res.render("search", { pageTitle: "search", searchingBy, videos });
 };
 
 export const uplode = (req, res) =>

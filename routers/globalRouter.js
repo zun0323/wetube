@@ -4,7 +4,8 @@ import { home, serach } from "../controllers/videoControllers";
 import {
   getJoin,
   postJoin,
-  login,
+  getLogin,
+  postLogin,
   logout
 } from "../controllers/userControllers";
 
@@ -15,7 +16,8 @@ globalRouter.post(routes.join, postJoin);
 
 globalRouter.get(routes.home, home);
 globalRouter.get(routes.search, serach);
-globalRouter.get(routes.login, login);
+globalRouter.get(routes.login, getLogin);
+globalRouter.post(routes.login, postLogin);
 globalRouter.get(routes.logout, logout);
 
 export default globalRouter;

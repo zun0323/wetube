@@ -1,3 +1,4 @@
+import routes from "../routes";
 import { videos } from "../db";
 export const home = (req, res) => {
   res.render("home", { pageTitle: "Home", videos });
@@ -10,8 +11,15 @@ export const serach = (req, res) => {
   res.render("search", { pageTitle: "search", searchingBy, videos });
 };
 
-export const uplode = (req, res) =>
+export const getUplode = (req, res) =>
   res.render("uplode", { pageTitle: "uplode" });
+
+export const postUplode = (req, res) => {
+  const {
+    body: { file, title, description }
+  } = req;
+  res.redirect(routes.videoDetail(334232));
+};
 
 export const videoDetail = (req, res) =>
   res.render("videoDetail", { pageTitle: "videoDetail" });

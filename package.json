@@ -20,6 +20,7 @@
     "start": "nodemon --exec babel-node init.js --delay 2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@babel/preset-env": "^7.3.1",
     "nodemon": "^1.18.10"
   }

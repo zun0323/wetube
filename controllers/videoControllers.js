@@ -11,11 +11,19 @@ export const home = async (req, res) => {
   }
 };
 
-export const serach = (req, res) => {
+export const serach = async (req, res) => {
   const {
     query: { term: searchingBy }
   } = req;
-  res.render("search", { pageTitle: "search", searchingBy });
+  let videos = [];
+  try {
+    videos = await Video.find({
+      title: { $regex: searchingBy, $options: "i" }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+  res.render("search", { pageTitle: "search", searchingBy, videos });
 };
 
 export const getUplode = (req, res) =>
@@ -40,6 +48,7 @@ export const videoDetail = async (req, res) => {
   } = req;
   try {
     const video = await Video.findById(id);
+    console.log(video);
     res.render("videoDetail", { pageTitle: "videoDetail", video });
   } catch (error) {
     res.redirect(routes.home);

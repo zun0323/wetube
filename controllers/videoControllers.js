@@ -1,11 +1,11 @@
 import routes from "../routes";
-import Video from "../models/Video";
+import Video from "../models/video";
 
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({});
+    const videos = await Video.find({}).sort({ _id: -1 });
     res.render("home", { pageTitle: "Home", videos });
-  } catch {
+  } catch (error) {
     console.log(error);
     res.render("home", { pageTitle: "Home", video: [] });
   }
@@ -15,7 +15,7 @@ export const serach = (req, res) => {
   const {
     query: { term: searchingBy }
   } = req;
-  res.render("search", { pageTitle: "search", searchingBy, videos });
+  res.render("search", { pageTitle: "search", searchingBy });
 };
 
 export const getUplode = (req, res) =>
@@ -78,7 +78,7 @@ export const deleteVideo = async (req, res) => {
   try {
     await Video.findOneAndRemove({ _id: id });
     res.redirect(routes.home);
-  } catch {
+  } catch (error) {
     res.redirect(routes.videoDetail);
   }
 };
